@@ -1,4 +1,4 @@
-least-squares-in-java
+Least squares in Java
 =====================
 
 Java Least Squares fitting library.
@@ -6,8 +6,9 @@ Java Least Squares fitting library.
 
 This is a small least squares fitting library made in java.
 It was originally used in the development of an image analysis tool 
-SpeckleTrackerJ. http://athena.physics.lehigh.edu/speckletrackerj/ It uses
-methods described in "Numerical Recipes in C", Second Edition (1992).
+SpeckleTrackerJ. http://athena.physics.lehigh.edu/speckletrackerj/ I took 
+it from odinsbane (https://github.com/odinsbane) and now it has a GUI. English
+version is coming soon!
 
 The outline of using this library is you have a set of data that you
 would like fit a function to. Define the Function, how it evaluates
@@ -16,56 +17,26 @@ to the function. Set the fitter with the data and make an initial guess of the
 parameters. Tell the fitter to find the best set of parameters which minimizes the
 sum of squares of error.
 
-Example
+Examples of console using can be found on odinsbane account.
+Here is an example of using it in GUI
 -------
 
 Lets say we have some data.
 
-    double[][] xs = {
-        {0}, {1}, {2}, {3}, {4}, {5}
-    };
-    double[] z = {1.1, 0.9, 1.0, 1.35, 1.82, 2.5};
+x : y
+0 : 1.0
+1 : 0.9
+2 : 1.0
+3 : 1.3
+4 : 1.8
+5 : 2.5
 
-And we want to fit a quadratic function f(x) = A*x*x + B*x + C. The parameters are A, B, C and the
-input is x. So we have 3 parameters and 1 input.
+And we want to look on it's graph. THan we should write this way on a field below:
 
-    Function fun = new Function(){
-        @Override
-        public double evaluate(double[] values, double[] parameters) {
-            double A = parameters[0];
-            double B = parameters[1];
-            double C = parameters[2];
-            double x = values[0];
-            return A*x*x + B*x + C;
-        }
-        @Override
-        public int getNParameters() {
-            return 3;
-        }
+0, 1.0; 1, 0.9; 2, 1.0; 3, 1.3; 4, 1.8; 5, 2.5
 
-        @Override
-        public int getNInputs() {
-            return 1;
-        }
-    };
-
-The next step is to create a fitter.
-
-    Fitter fit = new LinearFitter(fun);
-
-Set the data, and make a guess at the initial parameters.
-
-    fit.setData(xs, zs);
-    fit.setParameters(new double[]{0,0,0});
-
-    fit.fitData();
-
-The results can be obtained by using getParameters.
-
-    System.out.println(Arrays.toString(fit.getParameters()));
-    #[0.10000000000000023, -0.20000000000000123, 1.000000000000001]
-
-This example is included in the examples package.
+Change or do not change the order of the optimised function below it in a small window.
+Then press the button and enjoy :)
 
 
 Fitter implementations
