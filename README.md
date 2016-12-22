@@ -18,7 +18,8 @@ parameters. Tell the fitter to find the best set of parameters which minimizes t
 sum of squares of error.
 
 Examples of console using can be found on odinsbane account.
-Here is an example of using it in GUI
+Here is an example of using it with GUI.
+Run Main.class in src/main/sample
 -------
 
 Lets say we have some data.
